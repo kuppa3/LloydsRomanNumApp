@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    h1.text-center Convert Roman numerals to Decimal
+    h3.text-center (1 to 3999 possible)
+    
+    form(method='post', action='/romanToDecimal')
+        .input-group
+            input.form-control(type='text', placeholder='Write a roman number', name='roman')
+            span.input-group-btn
+                input.btn.btn-success(type='submit', value='Convert to Decimal')

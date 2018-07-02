@@ -8,7 +8,7 @@ module.exports = (app) => {
 
 	/* GET home page. */
 	app.get('/', (req, res, next) => {
-	  res.render('index', { title: 'Express' });
+	  res.render('index', { title: 'Konark Uppal: Roman To Decimal Convertor' });
 	});
 
 	require('./romanToDecimal')(app);
