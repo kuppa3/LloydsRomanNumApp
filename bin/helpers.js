@@ -1,9 +1,16 @@
+/*
+ * @FileName: helpers.js
+ * @Author: Konark Uppal
+ * @Description: contains all the helper functions for server & routes.
+*/
+
+
 /**
  * Normalize a port into a number, string, or false.
  */
 
-var normalizePort = (val)  => {
-  var port = parseInt(val, 10);
+let normalizePort = (val)  => {
+  let port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe

@@ -1,12 +1,18 @@
-var app = require('../../app');
-var supertest = require('supertest');
-var config = require('../../config/config');
+/*
+ * @FileName: index-test.js
+ * @Author: Konark Uppal
+ * @Description: test-case for index.js file.
+*/
 
-var api = supertest('http://' + config.serverIp + ':' + app.get('port'));
+let app = require('../../app');
+let supertest = require('supertest');
+let config = require('../../config/config');
 
-describe('Server should start', function () {
+let api = supertest('http://' + config.serverIp + ':' + app.get('port'));
 
-	it('Check for server status', function (done) {
+describe('Server should start', () => {
+
+	it('Check for server status', (done) => {
 		api.get('/')
 			.set('Accept', 'application/json')
 			.expect('Content-Type', 'text/html; charset=utf-8')

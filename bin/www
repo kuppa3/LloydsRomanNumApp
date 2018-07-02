@@ -1,30 +1,35 @@
-#!/usr/bin/env node
+/*
+ * @FileName: www
+ * @Author: Konark Uppal
+ * @Description: entry point to the app. Configures the server.
+*/
+
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('lloydsromannumapp:server');
-var http = require('http');
-var config = require('../config/config');
+let app = require('../app');
+let debug = require('debug')('lloydsromannumapp:server');
+let http = require('http');
+let config = require('../config/config');
 
 /**
  * Create HTTP server.
  */
-var server = module.exports = http.createServer(app);
+let server = module.exports = http.createServer(app);
 
 /**
  * Get port from environment.
  */
-var port = app.get('port');
+let port = app.get('port');
 
 server.on('error', onError);
 server.on('listening', onListening);
 
-server.start = function(callback) {
+server.start = (callback) => {
   //start the web server
-  return server.listen(port, function(){
+  return server.listen(port, () => {
     console.log('Browse your REST API at URL: http://%s:%s', config.serverIp, app.get('port'));
     if (callback) {
       callback(null, server);
@@ -37,12 +42,12 @@ server.start = function(callback) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError (error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  let bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -65,9 +70,9 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+function onListening () {
+  let addr = server.address();
+  let bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);

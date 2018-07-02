@@ -1,20 +1,29 @@
-var app = require('../../app');
-var supertest = require('supertest');
-var config = require('../../config/config');
+/*
+ * @FileName: romanToDecimal-test.js
+ * @Author: Konark Uppal
+ * @Description: test cases for romanToDecimal.js.
+*/
 
-var api = supertest('http://' + config.serverIp + ':' + app.get('port'));
+let app = require('../../app');
+let supertest = require('supertest');
+let chai = require('chai');
+let expect = chai.assert;
+let config = require('../../config/config');
 
-describe('Roman To Decimal Api Test', function () {
+let api = supertest('http://' + config.serverIp + ':' + app.get('port'));
 
-	context('Basic Letter Conversions', function () {
+describe('Roman To Decimal Api Test', () => {
 
-		it('checks I to be 1', function (done) {
-			api.get('/romanToDecimal')
+	context('Basic Letter Conversions', () => {
+
+		it('checks I to be 1', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"I"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"I",
 						"decimal":"1"
 					};
@@ -23,13 +32,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks V to be 5', function (done) {
-			api.get('/romanToDecimal')
+		it('checks V to be 5', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"V"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"V",
 						"decimal":"5"
 					};
@@ -38,13 +48,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks X to be 10', function (done) {
-			api.get('/romanToDecimal')
+		it('checks X to be 10', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"X"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"X",
 						"decimal":"10"
 					};
@@ -53,13 +64,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks L to be 50', function (done) {
-			api.get('/romanToDecimal')
+		it('checks L to be 50', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"L"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"L",
 						"decimal":"50"
 					};
@@ -68,13 +80,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks C to be 100', function (done) {
-			api.get('/romanToDecimal')
+		it('checks C to be 100', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"C"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"C",
 						"decimal":"100"
 					};
@@ -83,13 +96,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks D to be 500', function (done) {
-			api.get('/romanToDecimal')
+		it('checks D to be 500', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"D"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"D",
 						"decimal":"500"
 					};
@@ -98,13 +112,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks M to be 1000', function (done) {
-			api.get('/romanToDecimal')
+		it('checks M to be 1000', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"M"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"M",
 						"decimal":"1000"
 					};
@@ -114,15 +129,16 @@ describe('Roman To Decimal Api Test', function () {
 		});
 	});
 
-	context('Conversion of subtractive Roman numerals', function () {
+	context('Conversion of subtractive Roman numerals', () => {
 
-		it('checks IV to be 4', function (done) {
-			api.get('/romanToDecimal')
+		it('checks IV to be 4', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"IV"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"IV",
 						"decimal":"4"
 					};
@@ -131,13 +147,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks IX to be 9', function (done) {
-			api.get('/romanToDecimal')
+		it('checks IX to be 9', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"IX"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"IX",
 						"decimal":"9"
 					};
@@ -146,13 +163,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks XL to be 40', function (done) {
-			api.get('/romanToDecimal')
+		it('checks XL to be 40', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"XL"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"XL",
 						"decimal":"40"
 					};
@@ -161,13 +179,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks XC to be 90', function (done) {
-			api.get('/romanToDecimal')
+		it('checks XC to be 90', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"XC"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"XC",
 						"decimal":"90"
 					};
@@ -176,13 +195,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks CD to be 400', function (done) {
-			api.get('/romanToDecimal')
+		it('checks CD to be 400', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"CD"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"CD",
 						"decimal":"400"
 					};
@@ -191,13 +211,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks CM to be 900', function (done) {
-			api.get('/romanToDecimal')
+		it('checks CM to be 900', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"CM"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"CM",
 						"decimal":"900"
 					};
@@ -207,15 +228,16 @@ describe('Roman To Decimal Api Test', function () {
 		});
 	});
 
-	context('Conversion of complex Roman numerals', function () {
+	context('Conversion of complex Roman numerals', () => {
 
-		it('checks III to be 3', function (done) {
-			api.get('/romanToDecimal')
+		it('checks III to be 3', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"III"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"III",
 						"decimal":"3"
 					};
@@ -224,13 +246,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks VIII to be 8', function (done) {
-			api.get('/romanToDecimal')
+		it('checks VIII to be 8', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"VIII"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"VIII",
 						"decimal":"8"
 					};
@@ -239,13 +262,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks XIX to be 19', function (done) {
-			api.get('/romanToDecimal')
+		it('checks XIX to be 19', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"XIX"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"XIX",
 						"decimal":"19"
 					};
@@ -254,13 +278,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks XXXVIII to be 38', function (done) {
-			api.get('/romanToDecimal')
+		it('checks XXXVIII to be 38', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"XXXVIII"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"XXXVIII",
 						"decimal":"38"
 					};
@@ -269,13 +294,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks MCMIV to be 1904', function (done) {
-			api.get('/romanToDecimal')
+		it('checks MCMIV to be 1904', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"MCMIV"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"MCMIV",
 						"decimal":"1904"
 					};
@@ -284,13 +310,14 @@ describe('Roman To Decimal Api Test', function () {
 				});
 		});
 
-		it('checks MMMCMXCIX to be 3999', function (done) {
-			api.get('/romanToDecimal')
+		it('checks MMMCMXCIX to be 3999', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"MMMCMXCIX"})
 				.set('Accept', 'application/json')
 				.expect('Content-Type', 'application/json')
 				.expect(200)
-				.end(function (err, response) {
-					var expJSONObj = {
+				.end((err, response) => {
+					let expJSONObj = {
 						"roman":"MMMCMXCIX",
 						"decimal":"3999"
 					};

@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+/*
+ * @FileName: index.js
+ * @Author: Konark Uppal
+ * @Description: all routes land here in index.js file.
+*/
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = (app) => {
 
-module.exports = router;
+	/* GET home page. */
+	app.get('/', (req, res, next) => {
+	  res.render('index', { title: 'Express' });
+	});
+
+	require('./romanToDecimal')(app);
+}
