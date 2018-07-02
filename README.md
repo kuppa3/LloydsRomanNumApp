@@ -36,6 +36,7 @@ The project can be installed through following steps:
 4. Run the application in either of of following three ways:
 
 npm run dev
+
 This shall run the application in dev mode.
 It shall spawn the server, run all the unit test cases, 
 generates the test-coverage report in reports folder,
@@ -43,11 +44,13 @@ close the server instance,
 and then restart the server using nodemon.
 
 npm run test
+
 This shall spawn the server, run all the unit test cases,
 generates the test-coverage report in reports folder
 and closes the server instance.
 
 npm run start
+
 This shall spawn the server.
 
 
@@ -56,12 +59,15 @@ http://localhost:3000/
 
 Front End Form: opens default (http://localhost:3000/)
 Backend API: POST http://localhost:3000/romanToDecimal
+
 Body Param:
+
 {
 	"roman":"XX"
 }
 
 Intended output:
+
 {
     "roman": "XX",
     "decimal": "20"
@@ -77,6 +83,7 @@ node ./bin/www
 ## Running the tests
 
 You can run the tests as:
+
 npm run test
 
 I have got 100% code coverage for the project.
