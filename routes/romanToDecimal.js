@@ -21,11 +21,15 @@ module.exports = (app) => {
 
 		    let str = req.body.roman;
 		    decimalService.convert(str).then((value) => {
-		    	let output = {
-		  			"roman":str,
+		    	
+			    let output = {
+			  		"roman":str,
 					"decimal": value
-		  		};
-		  		res.send(output);
+			  	};
+			  	res.send(output);
+		    })
+		    .catch((err) => {
+		    	res.status(400).send(err);
 		    });
 		}
 		else {

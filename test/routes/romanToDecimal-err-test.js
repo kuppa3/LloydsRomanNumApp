@@ -89,6 +89,21 @@ describe('Error Scenarios for Roman To Decimal Api', () => {
 					done();
 				});
 		});
+
+		it('checks that subtractive symbol is not placed at 2nd position from itself', (done) => {
+			api.post('/romanToDecimal')
+				.send({"roman":"IXI"})
+				.set('Accept', 'application/json')
+				.expect('Content-Type', 'application/json')
+				.expect(400)
+				.end((err, response) => {
+					let expJSONObj = {
+    					"error": "Incorrect input."
+					};
+					expect.deepEqual(response.body, expJSONObj, 'Response should match to expected');
+					done();
+				});
+		});
 		
 	});
 });
