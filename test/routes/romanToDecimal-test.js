@@ -1,7 +1,7 @@
 /*
  * @FileName: romanToDecimal-test.js
  * @Author: Konark Uppal
- * @Description: test cases for romanToDecimal.js.
+ * @Description: positive test cases for romanToDecimal.js.
 */
 
 let app = require('../../app');
