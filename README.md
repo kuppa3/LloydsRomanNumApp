@@ -1,11 +1,15 @@
 # LloydsRomanNumApp
 
 The program converts roman numerals into decimal numbers.
-It renders a form (made through Jade) and makes a post request call to the API. 
+It renders a form (available in Angular6 through dist folder) and makes a post request call to the API. 
 
-The program takes care of all the possible scenarios as per the grammatical rules invoving Roman numbers.
-All test cases are run through gulp task runner using Mocha & Chai framework.
-Test case coverage is generated using gulp-istanbul.
+The program takes care of all the possible scenarios as per the grammatical rules involving Roman numbers.
+There are two types of test cases: 
+1. Unit test cases (npm run test:unit)
+2. Integration test cases (npm run test:integration)
+
+All test cases are run through simplified, self-created Javascript task runner (test.main.js) using Mocha & Chai framework.
+Test case coverage is generated using npm nyc (npm run test:coverage).
 
 
 ## Getting Started
@@ -24,7 +28,6 @@ You shall require:
 Node JS - version 8.x
 Node Package Manager (npm) - version 5.6.0 or above
 Browser (preferably Chrome)
-Gulp
 Git Bash
 
 ### Installing
@@ -38,14 +41,16 @@ The project can be installed through following steps:
 npm run dev
 
 This shall run the application in dev mode.
-It shall spawn the server, run all the unit test cases, 
-generates the test-coverage report in reports folder,
+It shall spawn the server, run ESLint, run all the unit test cases, 
+run all the integration test cases,
+generates the test-coverage report in coverage folder,
 close the server instance,
 and then restart the server using nodemon.
 
 npm run test
 
 This shall spawn the server, run all the unit test cases,
+run all the Integration test cases,
 generates the test-coverage report in reports folder
 and closes the server instance.
 
@@ -55,9 +60,9 @@ This shall spawn the server.
 
 
 On local, the APIs can be accessed at:
-http://localhost:3000/
+http://localhost:3000
 
-Front End Form: opens default (http://localhost:3000/)
+Front End Form: opens default (http://localhost:3000)
 Backend API: POST http://localhost:3000/romanToDecimal
 
 Body Param:
@@ -105,11 +110,15 @@ Lines        : 100% ( 14/14 )
 
 ### Break down into end to end tests
 
-There are 26 unit test cases dividing into following categories:
+There are 19 unit test cases dividing into following categories:
 
 1. Basic letter conversions (I, V, X, L, C, D, M)
 2. Subtractive Roman Numerals (IV, IX, XL, XC, CD, CM)
 3. Conversion of complex roman numerals with various scenarios,
+
+There are 14 integration test cases which test some scenarios from each of the above category,
+along with the following error scenarios.
+
 4. Error scenarios: 
    a. No input
    b. unrecognised symbols
@@ -121,14 +130,12 @@ There are 26 unit test cases dividing into following categories:
 I have tried to cover all possible scenarios. 
 Lastly, there is a test case to check server status.
 
-You can check the code coverage in Reports folder.
+You can check the code coverage in Coverage folder.
 
 
 ### And coding style tests
 
-ES6 has been used. 
-I wanted to use async and await, but istanbul (used for code coverage) could not parse it.
-Therefore, I had to switch back to promises.
+ES6 has been used.
 
 ## Deployment
 
@@ -145,6 +152,7 @@ Ideally, I would like to deply using PM2 or forever on server using technologies
 ## Built With
 
 * [ExpressJS](https://expressjs.com/) - The node js used
+* [Angular6](https://angular.io/) - Angular6 dist is used
 * [Jade](http://jade-lang.com/) - Front End
 * [GitHub](https://github.com/kuppa3/LloydsRomanNumApp) - Application page
 

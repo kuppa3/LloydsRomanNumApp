@@ -12,8 +12,11 @@ let logger = require('morgan')
 let helpers = require('./bin/helpers')
 let config = require('./config/config')
 let routes = require('./routes/index')
+let cors = require('cors')
 
 let app = express()
+
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -23,7 +26,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'dist/UI')))
 
 routes(app)
 

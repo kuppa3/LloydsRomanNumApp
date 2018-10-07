@@ -12,7 +12,7 @@ let api = supertest('http://' + config.serverIp + ':' + app.get('port'))
 
 describe('Server should start', () => {
   it('Check for server status', (done) => {
-    api.get('/')
+    api.get('/index')
       .set('Accept', 'application/json')
       .expect('Content-Type', 'text/html; charset=utf-8')
       .expect(200, done)
